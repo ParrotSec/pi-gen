@@ -17,6 +17,7 @@ bootstrap(){
 
 	capsh --drop=cap_setfcap -- "${BOOTSTRAP_CMD}" --components=main,contrib,non-free \
 		--arch armhf \
+		--include=gnupg2,dirmngr \
 		--keyring "${STAGE_DIR}/files/raspberrypi.gpg" \
 		"$1" "$2" "$3" || true
 	if [ -d "$2/debootstrap" ]; then
@@ -79,7 +80,7 @@ on_chroot() {
 	if ! mount | grep -q "$(realpath "${ROOTFS_DIR}"/dev)"; then
 		mount --bind /dev "${ROOTFS_DIR}/dev"
 	fi
-	
+
 	if ! mount | grep -q "$(realpath "${ROOTFS_DIR}"/dev/pts)"; then
 		mount --bind /dev/pts "${ROOTFS_DIR}/dev/pts"
 	fi
