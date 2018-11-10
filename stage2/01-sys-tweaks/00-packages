@@ -1,6 +1,7 @@
 ssh less fbset sudo psmisc strace ed ncdu crda
+parrot-core init-system-helpers parrot-skel
 console-setup keyboard-configuration debconf-utils parted unzip
-build-essential manpages-dev python bash-completion gdb pkg-config
+build-essential manpages-dev python bash-completion gcc gdb pkg-config
 python-rpi.gpio v4l-utils
 avahi-daemon
 lua5.1

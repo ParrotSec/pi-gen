@@ -5,6 +5,7 @@ install -m 644 files/noclear.conf "${ROOTFS_DIR}/etc/systemd/system/getty@tty1.s
 install -v -m 644 files/fstab "${ROOTFS_DIR}/etc/fstab"
 
 on_chroot << EOF
+apt -y install parrot-skel
 if ! id -u pi >/dev/null 2>&1; then
 	adduser --disabled-password --gecos "" pi
 fi
